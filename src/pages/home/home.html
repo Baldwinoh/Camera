@@ -1,14 +1,34 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>
+            Bald Cam
+        </ion-title>
+    </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content padding class="container">
+
+
+    <ion-grid>
+        <ion-row>
+            <ion-col col-6 *ngFor="let photo of photos; let id=index">
+                <ion-card class="block">
+                    <ion-icon name="trash" class="delete" (click)="deletePhoto(id)"></ion-icon>
+                    <img [src]="photo" *ngIf="photo" />
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <button ion-button icon-only (tap)="toggle()" color="dark" round><ion-icon name="flash"></ion-icon></button>
 </ion-content>
+
+<ion-footer class="footer">
+    <ion-toolbar class="footer" color="secondary">
+        <ion-buttons start>
+            <button (click)="takePhoto()" ion-button icon-only color="royal" round><ion-icon name="camera"></ion-icon></button>
+        </ion-buttons>
+        <ion-buttons end>
+            <button (click)="Gallery()" ion-button icon-only color="royal" round><ion-icon name="albums"></ion-icon></button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-footer>
